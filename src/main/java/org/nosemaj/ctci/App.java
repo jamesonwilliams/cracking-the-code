@@ -1,13 +1,14 @@
 package org.nosemaj.ctci;
 
 /**
- * Hello world!
- *
+ * A placeholder class.
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public final class App {
+    /**
+     * Executes the main program.
+     * @param args Command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
     }
 }
