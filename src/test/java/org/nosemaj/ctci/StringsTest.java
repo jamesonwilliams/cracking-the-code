@@ -34,4 +34,29 @@ public final class StringsTest {
     public void testAllCharsUniqueLinear_RepeatInput_ReturnsFalse() {
         Assert.assertFalse(Strings.allCharsUniqueLinear("123123"));
     }
+
+    @Test
+    public void testAreAnagrams_DifferentStrings() {
+        Assert.assertFalse(Strings.areAnagrams("foo", "bar"));
+    }
+
+    @Test
+    public void testAreAnagrams_GoatToga() {
+        Assert.assertTrue(Strings.areAnagrams("goat", "toga"));
+    }
+
+    @Test
+    public void testAreAnagrams_TogaGoat() {
+        Assert.assertTrue(Strings.areAnagrams("toga", "goat"));
+    }
+
+    @Test
+    public void testAreAnagrams_Compounds() {
+        Assert.assertTrue(Strings.areAnagrams("togagoat", "goattoga"));
+    }
+
+    @Test
+    public void testAreAnagrams_SubString() {
+        Assert.assertFalse(Strings.areAnagrams("boat", "a"));
+    }
 }
