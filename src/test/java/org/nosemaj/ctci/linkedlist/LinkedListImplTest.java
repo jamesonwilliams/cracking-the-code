@@ -144,4 +144,35 @@ public final class LinkedListImplTest {
         Assert.assertEquals(replacement, list.get(0));
     }
 
+    /**
+     * The Linked List implementation should provide a toString() method
+     * which makes references to the values in the list in some way.
+     *
+     * @Throws AssertionError If the toString() does not return a
+     *                        non-empty string or if the string doesn't
+     *                        make reference to the values in the list
+     */
+    @Test
+    public void shouldReturnString() {
+
+        LinkedList<Integer> list = new LinkedListImpl<>();
+        Integer[] values = {
+            random.nextInt(),
+            random.nextInt(),
+            random.nextInt()
+        };
+
+        for (int index = 0; index < values.length; index++) {
+            list.append(values[index]);
+        }
+
+        String representation = list.toString();
+        Assert.assertNotNull(representation);
+        Assert.assertNotEquals("", representation);
+
+        for (int index = 0; index < values.length; index++) {
+            String expected = String.valueOf(values[index]);
+            Assert.assertTrue(representation.contains(expected));
+        }
+    }
 }

@@ -22,7 +22,7 @@ import java.util.NoSuchElementException;
  * An implementation of a linked list.
  * @param <T> The type of element in the list
  */
-public final class LinkedListImpl<T> implements LinkedList<T> {
+public class LinkedListImpl<T> implements LinkedList<T> {
 
     /**
      * Reference to the first node in the list.
@@ -49,6 +49,14 @@ public final class LinkedListImpl<T> implements LinkedList<T> {
     @Override
     public T get(final int position) {
         return getNodeAtPosition(position).getData();
+    }
+
+    /**
+     * Gets a reference to the list head.
+     * @return A reference to the list head
+     */
+    protected Node<T> getHead() {
+        return this.head;
     }
 
     /**
@@ -92,6 +100,21 @@ public final class LinkedListImpl<T> implements LinkedList<T> {
         }
 
         return count;
+    }
+
+    @Override
+    public String toString() {
+        Node<T> node = getHead();
+        StringBuilder builder = new StringBuilder();
+        int position = 0;
+
+        while (node != null) {
+            builder.append(String.format("[%d]%s%n", position, node));
+            position++;
+            node = node.getNext();
+        }
+
+        return builder.toString();
     }
 
     /**
@@ -158,6 +181,17 @@ public final class LinkedListImpl<T> implements LinkedList<T> {
          */
         public void setNext(final Node<T> next) {
             this.next = next;
+        }
+
+        @Override
+        public String toString() {
+            String nextText = null;
+            if (next != null) {
+                nextText = String.valueOf(next.hashCode());
+            }
+
+            return String.format("[%s,%s]-->%s",
+                String.valueOf(this.hashCode()), data, nextText);
         }
     }
 }

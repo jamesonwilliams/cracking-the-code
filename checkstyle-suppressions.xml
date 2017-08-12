@@ -11,6 +11,7 @@
 
     <!-- All sources -->
     <suppress checks="HiddenField" files=".*\.java"/>
+    <suppress checks="DesignForExtension" files=".*\.java"/>
 
     <!-- All tests -->
     <suppress checks="MagicNumber" files=".*[\\/]src[\\/]test[\\/]"/>
