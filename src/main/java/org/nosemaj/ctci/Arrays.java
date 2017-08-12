@@ -179,4 +179,22 @@ public final class Arrays {
             }
         }
     }
+
+    /**
+     * Rotates a square matrix 90 degrees right.
+     * @param matrix the matrix to rotate
+     * @param size The size of one side of the matrix
+     */
+    public static int[][] rotateMatrixCopy(int[][] matrix, int size) {
+
+        int[][] result = new int[size][size];
+
+        for (int col = size - 1; col >= 0; col--) {
+            for (int row = 0; row < size; row++) {
+                result[row][col] = matrix[size - 1 - col][row];
+            }
+        }
+
+        return result;
+    }
 }
