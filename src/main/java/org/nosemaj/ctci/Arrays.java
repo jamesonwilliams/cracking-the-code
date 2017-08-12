@@ -5,14 +5,17 @@ package org.nosemaj.ctci;
  */
 public final class Arrays {
 
-    private static final char NUL = '\0';
-
     /**
-     * Disallows construction of this utility class.
+     * Disallows instantiation of this utility class.
      */
     private Arrays() {
-        throw new IllegalStateException("No instances!");
+        throw new IllegalStateException("No instances allowed.");
     }
+
+    /**
+     * The ASCII NUL char.
+     */
+    private static final char NUL = '\0';
 
     /**
      * Gets a reversed copy of the provided string.
@@ -23,7 +26,7 @@ public final class Arrays {
      *
      * @return A reversed copy of the provided string
      */
-    public static char[] reverseCopy(char[] string) {
+    public static char[] reverseCopy(final char[] string) {
         if (string == null) {
             return string;
         }
@@ -53,7 +56,7 @@ public final class Arrays {
      *
      * @return The provided string, which is now reversed
      */
-    public static char[] reverseInPlace(char[] string) {
+    public static char[] reverseInPlace(final char[] string) {
         if (string == null) {
             return string;
         }
@@ -85,7 +88,7 @@ public final class Arrays {
      * @param string A C-style NUL-terminated array of characters.
      * @return The provided C string, but modifed as described
      */
-    public static char[] removeDuplicatesInPlace(char[] string) {
+    public static char[] removeDuplicatesInPlace(final char[] string) {
         if (string == null) {
             return string;
         }
@@ -146,7 +149,9 @@ public final class Arrays {
      * @param rows Number of rows
      * @param cols Number of columns
      */
-    public static void zeroRowsAndCols(int[][] matrix, int rows, int cols) {
+    public static void zeroRowsAndCols(final int[][] matrix,
+            final int rows, final int cols) {
+
         boolean[] zeroRows = new boolean[rows];
         boolean[] zeroCols = new boolean[cols];
 
@@ -184,8 +189,10 @@ public final class Arrays {
      * Rotates a square matrix 90 degrees right.
      * @param matrix the matrix to rotate
      * @param size The size of one side of the matrix
+     * @return A rotated copy of the provided matrix
      */
-    public static int[][] rotateMatrixCopy(int[][] matrix, int size) {
+    public static int[][] rotateMatrixCopy(final int[][] matrix,
+            final int size) {
 
         int[][] result = new int[size][size];
 

@@ -12,7 +12,9 @@ public final class RandomString {
      * Refuses construction of a RandomString instance.
      */
     private RandomString() {
-        throw new IllegalStateException("No instances of RandomString allowed.");
+        throw new IllegalStateException(
+            "No instances of RandomString allowed."
+        );
     }
 
     /**

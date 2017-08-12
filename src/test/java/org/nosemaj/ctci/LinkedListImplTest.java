@@ -11,23 +11,43 @@ import java.util.NoSuchElementException;
  * Tests the implementation of a Linked List.
  */
 public final class LinkedListImplTest {
+
+    /**
+     * Random number generator.
+     */
     private Random random;
 
+    /**
+     * Initalize the random number generator.
+     */
     @Before
     public void setup() {
         random = new Random();
     }
 
+    /**
+     * Appending a null item to the list should be accetpable; the list
+     * size should increase by 1.
+     *
+     * @throws AssertionError if null was not successfully added to list
+     */
     @Test
-    public void testAppend_Null() {
+    public void shouldAppendNull() {
         LinkedList<Integer> list = new LinkedListImpl<>();
         list.append(null);
         Assert.assertEquals(1, list.size());
         Assert.assertNull(list.get(0));
     }
 
+    /**
+     * Appending a single item to the list should result in a list of
+     * size one -- the first element being the item that was appeneded.
+     *
+     * @throws AssertionError if a single item cannot be added to an
+     *                        empty list
+     */
     @Test
-    public void testAppend_ValidNode_FromEmptyList() {
+    public void shouldAppendValidNodeToEmptyList() {
         LinkedList<Integer> list = new LinkedListImpl<>();
         Integer value = random.nextInt();
         list.append(value);
@@ -35,11 +55,23 @@ public final class LinkedListImplTest {
         Assert.assertEquals(value, list.get(0));
     }
 
+    /**
+     * Tests the construction of a list with several items; they should
+     * be found in the order in which they were appened, and the list
+     * should have the correct size at each step.
+     *
+     * @throws AssertionError if basic construction of a simple list of
+     *                        some items fails
+     */
     @Test
-    public void testAppend_ValidNode_ConstructList() {
+    public void shouldConstructMultipleItemList() {
         LinkedList<Integer> list = new LinkedListImpl<>();
 
-        Integer[] values = { random.nextInt(), random.nextInt(), random.nextInt() };
+        Integer[] values = {
+            random.nextInt(),
+            random.nextInt(),
+            random.nextInt()
+        };
 
         // Add some values and watch the list size increase
         for (int index = 0; index < values.length; index++) {
@@ -53,26 +85,41 @@ public final class LinkedListImplTest {
         }
     }
 
+    /**
+     * An attempt to access a position in the list where there is no
+     * item should result in an {@link NoSuchElementException}.
+     *
+     * @throws NoSuchElementException This is the expected result of
+     *                                this test
+     */
     @Test(expected = NoSuchElementException.class)
-    public void testGet_NonExistantElement() {
+    public void shouldNotGetNonExistantElement() {
         LinkedList<Object> list = new LinkedListImpl<>();
         list.get(10);
     }
 
+    /**
+     * An attempt to access a position in the list where there is no
+     * item should result in an {@link NoSuchElementException}.
+     *
+     * @throws NoSuchElementException This is the expected result of
+     *                                this test
+     */
     @Test(expected = NoSuchElementException.class)
-    public void testSet_NonExistantElement() {
+    public void shouldNotSetNonExistantElement() {
         LinkedList<Object> list = new LinkedListImpl<>();
         list.set(4, new Object());
     }
 
-    @Test(expected = NoSuchElementException.class)
-    public void testSet_NonExistantElement_NonTrivialList() {
-        LinkedList<Object> list = new LinkedListImpl<>();
-        list.set(4, new Object());
-    }
-
+    /**
+     * Ensures that it is possible to set the value at given position in
+     * a list.
+     *
+     * @throws AssertionError if the value at the requested position has
+     *                        not been set correctly
+     */
     @Test
-    public void testSet_ValidPosition() {
+    public void shouldSetValueInValidPosition() {
         LinkedList<Integer> list = new LinkedListImpl<>();
         Integer original = random.nextInt();
         list.append(original);

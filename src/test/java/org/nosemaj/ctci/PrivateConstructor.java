@@ -7,16 +7,20 @@ import java.lang.reflect.Modifier;
 /**
  * Reflection utility to create instances of classes which have private
  * constructors. This is used only for test.
+ * @param <T> The class that has a private constructor
  */
 public final class PrivateConstructor<T> {
 
+    /**
+     * A reference to the declared constructor of the provided class.
+     */
     private final Constructor<T> constructor;
 
     /**
      * Constructs a new instance of the PrivateConstructor.
      * @param clazz The class of the object whose constructor is private
      */
-    public PrivateConstructor(Class<T> clazz) {
+    public PrivateConstructor(final Class<T> clazz) {
         try {
             constructor = clazz.getDeclaredConstructor();
             constructor.setAccessible(true);
@@ -38,6 +42,7 @@ public final class PrivateConstructor<T> {
      * Constructs a new instance of the class whose constructor has been
      * snooped.
      * @return A new instance of the class
+     * @throws Throwable if the constructor itself throws an exception
      */
     public T construct() throws Throwable {
         try {

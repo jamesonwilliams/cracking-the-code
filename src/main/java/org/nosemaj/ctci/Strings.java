@@ -11,10 +11,10 @@ import java.util.Set;
 public final class Strings {
 
     /**
-     * Disallows construction of this utility class.
+     * Disallows instantiation of this utility class.
      */
     private Strings() {
-        throw new IllegalStateException("No instances!");
+        throw new IllegalStateException("No instances.");
     }
 
     /**
@@ -23,10 +23,12 @@ public final class Strings {
      *
      * <p>Uses O(1) space, but runs in O(n^2) time.
      *
+     * @param string String to check for unique characters
+     *
      * @return true if all charactres in string are unique; false,
      *         otherwise.
      */
-    public static boolean allCharsUniquePoly(String string) {
+    public static boolean allCharsUniquePoly(final String string) {
         for (int outer = 0; outer < string.length(); outer++) {
             for (int inner = outer + 1; inner < string.length(); inner++) {
                 if (string.charAt(outer) == string.charAt(inner)) {
@@ -44,10 +46,12 @@ public final class Strings {
      *
      * <p>Uses O(n) space, and runs in O(n) time.
      *
+     * @param string The string to check for unique characters
+     *
      * @return true if all characters in string are unique; false,
      *         otherwise.
      */
-    public static boolean allCharsUniqueLinear(String string) {
+    public static boolean allCharsUniqueLinear(final String string) {
         Set<Character> seenChars = new HashSet<>();
 
         for (int index = 0; index < string.length(); index++) {
@@ -63,15 +67,16 @@ public final class Strings {
 
     /**
      * Check if a string is an anagram of another.
-     * 
+     *
      * <p>O(n) compute, O(n*m) space.
      *
      * @param first A string
      * @param second Another string
+     *
      * @return true if one string is an anagram of the other; false,
      *         otherwise
      */
-    public static boolean areAnagrams(String first, String second) {
+    public static boolean areAnagrams(final String first, final String second) {
         Map<Character, Integer> charCounts = new HashMap<>();
 
         if (first.length() != second.length()) {
@@ -117,7 +122,7 @@ public final class Strings {
      *
      * @return A string whose spaces have become %20
      */
-    public static String urlEncodeSpaces(String string) {
+    public static String urlEncodeSpaces(final String string) {
         StringBuilder builder = new StringBuilder();
 
         for (int index = 0; index < string.length(); index++) {
@@ -142,7 +147,7 @@ public final class Strings {
      * @return true if the strings are rotations of eachother; false,
      *         otherwise
      */
-    public static boolean isRotation(String first, String second) {
+    public static boolean isRotation(final String first, final String second) {
         if (first.length() != second.length()) {
             return false;
         }
