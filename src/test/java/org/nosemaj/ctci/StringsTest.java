@@ -59,4 +59,31 @@ public final class StringsTest {
     public void testAreAnagrams_SubString() {
         Assert.assertFalse(Strings.areAnagrams("boat", "a"));
     }
+
+    @Test
+    public void testUrlEncodeSpaces_NoSpaces() {
+        Assert.assertEquals("foobar", Strings.urlEncodeSpaces("foobar"));
+    }
+
+    @Test
+    public void testUrlEncodeSpaces_ManySpaces() {
+        String expected = "%20%20f%20o%20o%20ba%20%20r%20%20%20";
+        String input = "  f o o ba  r   ";
+        Assert.assertEquals(expected, Strings.urlEncodeSpaces(input));
+    }
+
+    @Test
+    public void testUrlEncodeSpaces_OnlySpaces() {
+        Assert.assertEquals("%20%20%20", Strings.urlEncodeSpaces("   "));
+    }
+
+    @Test
+    public void testUrlEncodeSpaces_AlreadyEncoded() {
+        Assert.assertEquals("%20foo%20bar", Strings.urlEncodeSpaces("%20foo%20bar"));
+    }
+
+    @Test
+    public void testUrlEncodeSpaces_PartiallyEncoded() {
+        Assert.assertEquals("%20foo%20bar%20%20", Strings.urlEncodeSpaces(" foo bar%20 "));
+    }
 }
