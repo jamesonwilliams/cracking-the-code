@@ -86,4 +86,19 @@ public final class StringsTest {
     public void testUrlEncodeSpaces_PartiallyEncoded() {
         Assert.assertEquals("%20foo%20bar%20%20", Strings.urlEncodeSpaces(" foo bar%20 "));
     }
+
+    @Test
+    public void testIsRotation_FooOof() {
+        Assert.assertTrue(Strings.isRotation("foo", "oof"));
+    }
+
+    @Test
+    public void testIsRotation_FooBar() {
+        Assert.assertFalse(Strings.isRotation("foo", "bar"));
+    }
+
+    @Test
+    public void testIsRotation_PortionInsideDouble() {
+        Assert.assertFalse(Strings.isRotation("ofo", "foofoofoo"));
+    }
 }

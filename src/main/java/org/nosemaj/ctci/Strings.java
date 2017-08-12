@@ -112,7 +112,9 @@ public final class Strings {
 
     /**
      * Replaces all instances of a space character by %20.
+     *
      * @param string A string that may contain spaces
+     *
      * @return A string whose spaces have become %20
      */
     public static String urlEncodeSpaces(String string) {
@@ -127,5 +129,24 @@ public final class Strings {
         }
 
         return builder.toString();
+    }
+
+    /**
+     * Check if one string is rotation of the other.
+     *
+     * <p>e.g. watterbottle and erbottlewat
+     *
+     * @param first A string
+     * @param second Another string
+     *
+     * @return true if the strings are rotations of eachother; false,
+     *         otherwise
+     */
+    public static boolean isRotation(String first, String second) {
+        if (first.length() != second.length()) {
+            return false;
+        }
+
+        return (first + first).contains(second);
     }
 }

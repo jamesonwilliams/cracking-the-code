@@ -82,6 +82,65 @@ public final class ArraysTest {
         testRemoveDuplicates("aBcDefG", "aBaaBBcDefGaB");
     }
 
+    @Test
+    public void testZeroRowsAndCols_NoZeros() {
+        int[][] input = {
+            { 1, 2 },
+            { 4, 5 },
+            { 7, 8 }
+        };
+
+        int[][] expected = {
+            { 1, 2 },
+            { 4, 5 },
+            { 7, 8 }
+        };
+
+        Arrays.zeroRowsAndCols(input, 3, 2);
+        assertEquals(expected, input);
+    }
+
+    @Test
+    public void testZeroRowsAndCols_OneZero() {
+        int[][] input = {
+            { 0, 2, 3 },
+            { 4, 5, 6 }
+        };
+
+        int[][] expected = {
+            { 0, 0, 0 },
+            { 0, 5, 6 }
+        };
+
+        Arrays.zeroRowsAndCols(input, 2, 3);
+        assertEquals(expected, input);
+    }
+
+    /**
+     * Asserts that the expected matrix is equal to the actual matrix.
+     * @param expected Expected matrix
+     * @param actual Actual matrix
+     */
+    private void assertEquals(int[][] expected, int[][] actual) {
+        if (expected == null) {
+            Assert.assertNull(actual);
+            return;
+        }
+
+        Assert.assertNotNull(actual);
+        Assert.assertEquals(expected.length, actual.length);
+        Assert.assertEquals(expected[0].length, actual[0].length);
+
+        for (int row = 0; row < expected.length; row++) {
+            for (int col = 0; col < expected[0].length; col++) {
+                Assert.assertEquals(
+                    String.format("Expected [%d][%d] = %d, but was %d.",
+                        row, col, expected[row][col], actual[row][col]),
+                    expected[row][col], actual[row][col]);
+            }
+        }
+    }
+
     /**
      * Tests the remove duplicates method by providing an input for the
      * method, and checking the execution of that input against an
