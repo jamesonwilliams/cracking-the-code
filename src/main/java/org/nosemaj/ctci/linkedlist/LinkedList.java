@@ -1,4 +1,4 @@
-package org.nosemaj.ctci;
+package org.nosemaj.ctci.linkedlist;
 
 import java.util.NoSuchElementException;
 

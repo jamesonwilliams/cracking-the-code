@@ -5,8 +5,15 @@
     "http://checkstyle.sourceforge.net/dtds/suppressions_1_1.dtd">
 
 <suppressions>
+
+    <!-- All package -->
+    <suppress checks="JavadocPackage" files=".*"/>
+
+    <!-- All sources -->
     <suppress checks="HiddenField" files=".*\.java"/>
 
+    <!-- All tests -->
     <suppress checks="MagicNumber" files=".*[\\/]src[\\/]test[\\/]"/>
-    <suppress checks="NoWhitespaceAfter" files="ArraysTest.java"/>
+    <suppress checks="NoWhitespaceAfter" files=".*[\\/]src[\\/]test[\\/]"/>
+
 </suppressions>

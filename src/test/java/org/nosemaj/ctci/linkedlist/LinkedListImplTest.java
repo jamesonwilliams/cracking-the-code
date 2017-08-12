@@ -1,4 +1,4 @@
-package org.nosemaj.ctci;
+package org.nosemaj.ctci.linkedlist;
 
 import org.junit.Assert;
 import org.junit.Before;
