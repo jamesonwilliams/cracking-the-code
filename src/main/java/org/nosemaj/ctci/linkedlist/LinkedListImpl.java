@@ -67,7 +67,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
      * @return The node at the requested position, if it exists
      * @throws NoSuchElementExcption if there is no node at position
      */
-    private Node<T> getNodeAtPosition(final int position) {
+    protected Node<T> getNodeAtPosition(final int position) {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
