@@ -68,17 +68,18 @@ public class LinkedListImpl<T> implements LinkedList<T> {
      * @throws NoSuchElementExcption if there is no node at position
      */
     private Node<T> getNodeAtPosition(final int position) {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
         Node<T> node = head;
+
         for (int index = 0; index < position; index++) {
+            node = node.getNext();
+
             if (node == null) {
                 throw new NoSuchElementException();
             }
-
-            node = node.getNext();
-        }
-
-        if (node == null) {
-            throw new NoSuchElementException();
         }
 
         return node;
@@ -193,5 +194,10 @@ public class LinkedListImpl<T> implements LinkedList<T> {
             return String.format("[%s,%s]-->%s",
                 String.valueOf(this.hashCode()), data, nextText);
         }
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return getHead() == null;
     }
 }

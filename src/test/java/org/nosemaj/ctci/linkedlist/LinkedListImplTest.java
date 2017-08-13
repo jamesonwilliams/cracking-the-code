@@ -109,7 +109,7 @@ public final class LinkedListImplTest {
      *                                this test
      */
     @Test(expected = NoSuchElementException.class)
-    public void shouldNotGetNonExistantElement() {
+    public void shouldThrowsNoSuchElementWhenGetFromEmptyList() {
         LinkedList<Object> list = new LinkedListImpl<>();
         list.get(10);
     }
@@ -122,8 +122,9 @@ public final class LinkedListImplTest {
      *                                this test
      */
     @Test(expected = NoSuchElementException.class)
-    public void shouldNotSetNonExistantElement() {
+    public void shouldThrowNoSuchElementIfSetIndexOutOfBounds() {
         LinkedList<Object> list = new LinkedListImpl<>();
+        list.append(random.nextInt());
         list.set(4, new Object());
     }
 

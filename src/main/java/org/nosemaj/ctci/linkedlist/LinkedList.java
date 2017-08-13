@@ -58,4 +58,11 @@ public interface LinkedList<T> {
      * @throws NoSuchElementException if there is no item at position
      */
     void set(int position, T value) throws NoSuchElementException;
+
+    /**
+     * Determines if the list contains no elements.
+     *
+     * @return true if the list is empty; false, otherwise
+     */
+    boolean isEmpty();
 }
